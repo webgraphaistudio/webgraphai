@@ -69,4 +69,4 @@ Disallow: /*.xml$
 # Disallow: /
 
 # Sitemap location
-Sitemap: https://webgraphai.onrender.com/sitemap.xml
+Sitemap: https://web-graph-ai-studio.onrender.com/sitemap.xml
