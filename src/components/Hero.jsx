@@ -65,16 +65,18 @@ const Hero = () => {
           </motion.div>
 
           {/* Large Title Text Reveal (Pure White Color Only) */}
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-[4rem] font-sans font-black tracking-tight text-white leading-[1.1] select-none"
+            role="heading"
+            aria-level="1"
           >
             Transforming Bold Ideas <br />
             Into Powerful Digital <br />
             Experiences.
-          </motion.h1>
+          </motion.div>
 
           {/* Subtitle description */}
           <motion.p
