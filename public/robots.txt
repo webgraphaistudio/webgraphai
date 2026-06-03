@@ -1,0 +1,72 @@
+# robots.txt for WebGraph AI Studio
+# https://www.webgraph.in/robots.txt
+
+# Default: Allow all crawlers
+User-agent: *
+Allow: /
+
+# Crawl-delay for polite bots (1 second)
+Crawl-delay: 1
+
+# --- Specific Bot Directives ---
+
+# Googlebot - generous crawl budget
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bingbot
+User-agent: bingbot
+Allow: /
+Crawl-delay: 2
+
+# Applebot (Siri/Spotlight)
+User-agent: Applebot
+Allow: /
+
+# Twitterbot (link previews)
+User-agent: Twitterbot
+Allow: /
+
+# FacebookExternalHit (Open Graph)
+User-agent: facebookexternalhit
+Allow: /
+
+# LinkedInBot
+User-agent: LinkedInBot
+Allow: /
+
+# --- Disallow Paths ---
+
+# Development and build artifacts
+Disallow: /dist/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /src/
+
+# Private/admin areas
+Disallow: /admin/
+Disallow: /.env
+Disallow: /.env.*
+
+# Temporary/disallowed paths
+Disallow: /cgi-bin/
+Disallow: /*.json$
+Disallow: /*.xml$
+
+# Block AI scrapers (optional - uncomment if needed)
+# User-agent: GPTBot
+# Disallow: /
+# User-agent: ChatGPT-User
+# Disallow: /
+# User-agent: CCBot
+# Disallow: /
+# User-agent: Google-Extended
+# Disallow: /
+# User-agent: anthropic-ai
+# Disallow: /
+# User-agent: ClaudeBot
+# Disallow: /
+
+# Sitemap location
+Sitemap: https://www.webgraph.in/sitemap.xml

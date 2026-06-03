@@ -1,0 +1,423 @@
+@import "tailwindcss";
+
+/* Tailwind v4 theme — registers custom colors, shadows, and animations
+   so utilities like bg-electric, shadow-neon-blue, animate-float work. */
+@theme {
+  /* Brand palette — matched to logo (vibrant electric blue + warm orange + deep navy) */
+  --color-electric: #0A84FF;
+  --color-cyan: #00D4FF;
+  --color-deepBlue: #0057FF;
+  --color-orangeGold: #FF5E1A;
+  --color-navy: #0A1F4A;
+  --color-darkNavy: #08111F;
+  --color-charcoal: #08111F;
+
+  --shadow-neon-blue: 0 0 25px rgba(10, 132, 255, 0.45);
+  --shadow-neon-cyan: 0 0 25px rgba(0, 212, 255, 0.4);
+  --shadow-neon-orange: 0 0 25px rgba(255, 94, 26, 0.45);
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.35);
+  --shadow-glass-thick: 0 20px 60px rgba(0, 0, 0, 0.55);
+
+  --animate-pulse-slow: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 8s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out infinite 3s;
+  --animate-spin-slow: spin 20s linear infinite;
+}
+
+/* Custom variables and base styles */
+@layer base {
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+
+    50% {
+      transform: translateY(-15px) scale(1.02);
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  /* GPU acceleration for the Lenis-wrapped root */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+}
+
+/* Performance: skip rendering off-screen content where it is safe to do so */
+section[id] {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+body {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(10, 31, 74, 0.4) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0, 87, 255, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 10% 60%, rgba(10, 132, 255, 0.06) 0%, transparent 60%),
+    linear-gradient(180deg, #0A1F4A 0%, #08111F 40%, #050B1A 100%);
+  background-attachment: fixed;
+  color: #ffffff;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.service-bg-website-development {
+  background-image: url('./assets/service-bg/website-development.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.service-bg-graphic-design {
+  background-image: url('./assets/service-bg/graphic-design.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.service-bg-ai-solutions {
+  background-image: url('./assets/service-bg/ai-solutions.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.service-bg-branding {
+  background-image: url('./assets/service-bg/branding.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.service-bg-ui-ux-design {
+  background-image: url('./assets/service-bg/ui-ux-design.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.service-bg-digital-marketing {
+  background-image: url('./assets/service-bg/digital-marketing.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-charcoal);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(10, 132, 255, 0.25);
+  border-radius: 4px;
+  border: 2px solid var(--color-charcoal);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(10, 132, 255, 0.5);
+}
+
+/* Custom glassmorphism utilities */
+.glass-panel {
+  background: rgba(8, 17, 31, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.glass-panel-heavy {
+  background: rgba(5, 5, 5, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(10, 132, 255, 0.15);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+  margin-bottom: 1.5rem;
+  /* Added spacing between cards */
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(10, 132, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(10, 132, 255, 0.08);
+}
+
+/* Gradient Borders */
+.gradient-border {
+  position: relative;
+  border-radius: 1rem;
+  background: rgba(8, 17, 31, 0.4);
+  padding: 1px;
+  margin-bottom: 1.5rem;
+  /* spacing between gradient border cards */
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(10, 132, 255, 0.3) 0%, rgba(255, 94, 26, 0.1) 50%, rgba(0, 87, 255, 0.4) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.gradient-border:hover::before {
+  background: linear-gradient(135deg, rgba(10, 132, 255, 0.8) 0%, rgba(255, 94, 26, 0.4) 50%, rgba(0, 87, 255, 0.9) 100%);
+}
+
+/* Neon text & glows */
+.text-glow-blue {
+  text-shadow: 0 0 10px rgba(10, 132, 255, 0.4);
+}
+
+.text-glow-gold {
+  text-shadow: 0 0 10px rgba(255, 94, 26, 0.4), 0 0 20px rgba(255, 94, 26, 0.1);
+}
+
+.glow-overlay-blue {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(10, 132, 255, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(40px);
+}
+
+.glow-overlay-orange {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(255, 94, 26, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(40px);
+}
+
+/* Custom cursor — canvas-driven neon trail (see CustomCursor.jsx) */
+
+/* Shine sweep animation base */
+.shine-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-sweep::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 30%;
+  height: 200%;
+  background: linear-gradient(to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.13) 30%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.13) 70%,
+      rgba(255, 255, 255, 0) 100%);
+  transform: rotate(30deg);
+  pointer-events: none;
+}
+
+.shine-sweep:hover::after {
+  animation: shine 1.2s ease-in-out;
+}
+
+@keyframes shine {
+  100% {
+    left: 130%;
+  }
+}
+
+/* Spotlight hover effect */
+.spotlight-card {
+  position: relative;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(10, 132, 255, 0.06), transparent 40%);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* Hide scrollbar utility (for horizontal carousels) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide default cursor on desktop */
+@media (min-width: 1024px) {
+
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+/* --------------------------------------------------- */
+/* Orange Neon Card Styles - High Performance Services */
+/* --------------------------------------------------- */
+
+/* Neon orange text glow */
+.text-glow-orange {
+  text-shadow: 0 0 8px rgba(255, 94, 26, 0.6),
+    0 0 16px rgba(255, 94, 26, 0.4),
+    0 0 24px rgba(255, 94, 26, 0.2);
+}
+
+/* Base card styling to apply neon orange theme */
+.orange-neon-card {
+
+  border: 1px solid rgba(255, 94, 26, 0.6);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 0 10px rgba(10, 132, 255, 0.227);
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.orange-neon-card:hover {
+
+  box-shadow: 0 0 10px rgba(10, 132, 255, 0.195),
+    0 0 20px rgba(255, 94, 26, 0.5);
+}
+
+/* Apply orange neon theme to existing card classes */
+.glass-card,
+.gradient-border,
+.spotlight-card {
+  background: rgba(8, 17, 31, 0.45);
+  border: 1px solid rgba(255, 94, 26, 0.3);
+  box-shadow: 0 0 8px rgba(255, 94, 26, 0.2), 0 4px 12px rgba(0,0,0,0.4);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover,
+.gradient-border:hover,
+.spotlight-card:hover {
+  border-color: rgba(255, 94, 26, 0.6);
+  box-shadow: 0 0 12px rgba(255, 94, 26, 0.35), 0 6px 18px rgba(0,0,0,0.45);
+}
+
+.glass-card:hover,
+.gradient-border:hover,
+.spotlight-card:hover {
+
+  border-color: rgba(255, 94, 26, 0.9);
+  box-shadow: 0 0 14px rgba(255, 94, 26, 0.5),
+    0 0 28px rgba(255, 94, 26, 0.4);
+}
+
+/* Ensure card content is always visible, not just on hover */
+.glass-card>*,
+.gradient-border>*,
+.spotlight-card>* {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Keep existing popup functionality intact – no changes to JS */
+
+
+
+/* --------------------------------------------------- */
+/* Service Card Hover Effects */
+/* --------------------------------------------------- */
+.service-card .service-bg-layer {
+  opacity: 0.99;
+  transition: opacity 0.3s ease;
+}
+
+.service-card:hover .service-bg-layer {
+  opacity: 0.98;
+}
+
+/* Optional subtle overlay color on hover */
+.service-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.service-card:hover::after {
+  opacity: 1;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Page Not Found | WebGraph AI Studio</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="The page you're looking for doesn't exist. Return to WebGraph AI Studio homepage." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: 'Outfit', sans-serif;
+        background: #08111F;
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+        overflow: hidden;
+      }
+      .bg-orb {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(120px);
+        pointer-events: none;
+        opacity: 0.15;
+      }
+      .bg-orb.blue { width: 500px; height: 500px; background: #0A84FF; top: -10%; left: -10%; }
+      .bg-orb.orange { width: 400px; height: 400px; background: #FF9F1C; bottom: -10%; right: -10%; }
+      .container { position: relative; z-index: 10; max-width: 600px; }
+      .code {
+        font-size: clamp(6rem, 15vw, 12rem);
+        font-weight: 800;
+        background: linear-gradient(135deg, #0A84FF, #FF5E1A);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+      .title {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        font-weight: 700;
+        margin: 1rem 0 0.75rem;
+        color: #fff;
+      }
+      .desc {
+        color: #9ca3af;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
+        max-width: 440px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.875rem 2rem;
+        border-radius: 9999px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        color: #fff;
+        background: linear-gradient(135deg, #0A84FF, #0057FF);
+        border: 1px solid rgba(10,132,255,0.4);
+        box-shadow: 0 0 30px rgba(10,132,255,0.3);
+        transition: all 0.3s ease;
+      }
+      .btn:hover {
+        box-shadow: 0 0 50px rgba(10,132,255,0.5);
+        transform: translateY(-2px);
+      }
+      .links {
+        margin-top: 2rem;
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .links a {
+        color: #6b7280;
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: color 0.3s;
+      }
+      .links a:hover { color: #0A84FF; }
+      .line {
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, #0A84FF, #FF9F1C);
+        border-radius: 999px;
+        margin: 1.5rem auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-orb blue"></div>
+    <div class="bg-orb orange"></div>
+    <div class="container">
+      <div class="code">404</div>
+      <div class="line"></div>
+      <h1 class="title">Page Not Found</h1>
+      <p class="desc">
+        The page you're looking for doesn't exist or has been moved.
+        Let's get you back to building something extraordinary.
+      </p>
+      <a href="/" class="btn">
+        Back to Home
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <div class="links">
+        <a href="/#services">Services</a>
+        <a href="/#portfolio">Portfolio</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </body>
+</html>
